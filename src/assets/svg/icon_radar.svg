@@ -1,0 +1,13 @@
+<svg width="48" height="48" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="radarBG" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#A5E8FF"/>
+      <stop offset="100%" stop-color="#1E7DB8"/>
+    </linearGradient>
+  </defs>
+  <circle cx="24" cy="24" r="20" fill="url(#radarBG)" opacity="0.35" stroke="#A5E8FF" stroke-width="2"/>
+  <circle cx="24" cy="24" r="14" fill="none" stroke="#A5E8FF" stroke-width="1.5"/>
+  <circle cx="24" cy="24" r="8" fill="none" stroke="#A5E8FF" stroke-width="1.5"/>
+  <path d="M24 24 L24 6 L40 18 Z" fill="#FFD86B" opacity="0.85"/>
+  <circle cx="24" cy="24" r="3" fill="#FFD86B"/>
+</svg>

@@ -1,0 +1,52 @@
+<svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="pkBody" cx="50%" cy="40%" r="60%">
+      <stop offset="0%" stop-color="#3D526F"/>
+      <stop offset="55%" stop-color="#0E1A2D"/>
+      <stop offset="100%" stop-color="#05080F"/>
+    </radialGradient>
+    <linearGradient id="pkBelly" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF"/>
+      <stop offset="100%" stop-color="#D7E4EE"/>
+    </linearGradient>
+    <linearGradient id="pkBeak" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FFD27A"/>
+      <stop offset="100%" stop-color="#E08A2F"/>
+    </linearGradient>
+    <linearGradient id="pkFoot" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FFAE5E"/>
+      <stop offset="100%" stop-color="#E07823"/>
+    </linearGradient>
+    <linearGradient id="pkCrown" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FFE082"/>
+      <stop offset="50%" stop-color="#FFB037"/>
+      <stop offset="100%" stop-color="#7A4B0C"/>
+    </linearGradient>
+    <linearGradient id="pkCape" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#A12626"/>
+      <stop offset="100%" stop-color="#5C0E0E"/>
+    </linearGradient>
+  </defs>
+  <ellipse cx="100" cy="184" rx="48" ry="6" fill="rgba(0,0,0,0.25)"/>
+  <path d="M30 100 Q14 160 28 184 Q40 180 50 156 Q56 130 56 96 Z" fill="url(#pkCape)" stroke="#FFE082" stroke-width="1.2"/>
+  <path d="M170 100 Q186 160 172 184 Q160 180 150 156 Q144 130 144 96 Z" fill="url(#pkCape)" stroke="#FFE082" stroke-width="1.2"/>
+  <path d="M70 168 Q60 178 70 184 Q88 188 92 178 Z" fill="url(#pkFoot)"/>
+  <path d="M130 168 Q140 178 130 184 Q112 188 108 178 Z" fill="url(#pkFoot)"/>
+  <path d="M100 30 C56 30 38 70 38 110 C38 150 60 180 100 180 C140 180 162 150 162 110 C162 70 144 30 100 30 Z" fill="url(#pkBody)"/>
+  <path d="M100 62 C74 62 64 92 64 120 C64 150 80 172 100 172 C120 172 136 150 136 120 C136 92 126 62 100 62 Z" fill="url(#pkBelly)"/>
+  <ellipse cx="82" cy="86" rx="9" ry="11" fill="#FFFFFF"/>
+  <ellipse cx="118" cy="86" rx="9" ry="11" fill="#FFFFFF"/>
+  <circle cx="84" cy="88" r="4.5" fill="#0B0F18"/>
+  <circle cx="116" cy="88" r="4.5" fill="#0B0F18"/>
+  <circle cx="85.5" cy="86.5" r="1.6" fill="#FFFFFF"/>
+  <circle cx="117.5" cy="86.5" r="1.6" fill="#FFFFFF"/>
+  <ellipse cx="74" cy="106" rx="6" ry="3.5" fill="#F7B7BC" opacity="0.7"/>
+  <ellipse cx="126" cy="106" rx="6" ry="3.5" fill="#F7B7BC" opacity="0.7"/>
+  <path d="M100 96 L92 110 L100 116 L108 110 Z" fill="url(#pkBeak)" stroke="#E08A2F" stroke-width="0.8"/>
+  <path d="M90 124 Q100 132 110 124" stroke="#222" stroke-width="2" fill="none"/>
+  <path d="M58 38 L70 14 L82 30 L100 8 L118 30 L130 14 L142 38 L142 50 L58 50 Z" fill="url(#pkCrown)" stroke="#7A4B0C" stroke-width="1.6"/>
+  <circle cx="70" cy="20" r="3" fill="#E04545"/>
+  <circle cx="100" cy="14" r="3.6" fill="#5EC8F2"/>
+  <circle cx="130" cy="20" r="3" fill="#5CE38F"/>
+  <rect x="58" y="48" width="84" height="6" fill="url(#pkCrown)" stroke="#7A4B0C" stroke-width="1.2"/>
+</svg>

@@ -1,0 +1,134 @@
+<svg width="400" height="260" viewBox="0 0 400 260" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="frBody" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FF6B6B"/>
+      <stop offset="50%" stop-color="#E63946"/>
+      <stop offset="100%" stop-color="#9D1C2A"/>
+    </linearGradient>
+    <linearGradient id="frBelly" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FFD3D3"/>
+      <stop offset="100%" stop-color="#FF8A8A"/>
+    </linearGradient>
+    <linearGradient id="frFin" x1="0%" y1="100%" x2="0%" y2="0%">
+      <stop offset="0%" stop-color="#9D1C2A"/>
+      <stop offset="100%" stop-color="#FF8181"/>
+    </linearGradient>
+    <linearGradient id="frTail" x1="100%" y1="50%" x2="0%" y2="50%">
+      <stop offset="0%" stop-color="#FF8181"/>
+      <stop offset="100%" stop-color="#9D1C2A"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Tail fin (left side, big triangular tail) -->
+  <path d="M40 130
+           L130 60
+           L120 110
+           L150 130
+           L120 150
+           L130 200
+           Z"
+        fill="url(#frTail)"
+        stroke="#6E0E1A"
+        stroke-width="3"
+        stroke-linejoin="round"/>
+  <!-- Tail fin lines -->
+  <path d="M60 90 L120 130" stroke="#6E0E1A" stroke-width="2" opacity="0.7"/>
+  <path d="M60 170 L120 130" stroke="#6E0E1A" stroke-width="2" opacity="0.7"/>
+  <path d="M80 75 L120 130" stroke="#6E0E1A" stroke-width="1.6" opacity="0.55"/>
+  <path d="M80 185 L120 130" stroke="#6E0E1A" stroke-width="1.6" opacity="0.55"/>
+
+  <!-- Top dorsal fin -->
+  <path d="M180 60
+           Q220 20 270 50
+           L260 80
+           Q220 70 200 80
+           Z"
+        fill="url(#frFin)"
+        stroke="#6E0E1A"
+        stroke-width="3"
+        stroke-linejoin="round"/>
+  <path d="M200 60 L210 78" stroke="#6E0E1A" stroke-width="1.5" opacity="0.65"/>
+  <path d="M220 50 L225 75" stroke="#6E0E1A" stroke-width="1.5" opacity="0.65"/>
+  <path d="M245 50 L242 75" stroke="#6E0E1A" stroke-width="1.5" opacity="0.65"/>
+
+  <!-- Bottom ventral fin -->
+  <path d="M180 200
+           Q220 240 270 210
+           L260 180
+           Q220 190 200 180
+           Z"
+        fill="url(#frFin)"
+        stroke="#6E0E1A"
+        stroke-width="3"
+        stroke-linejoin="round"/>
+  <path d="M200 200 L210 182" stroke="#6E0E1A" stroke-width="1.5" opacity="0.65"/>
+  <path d="M220 210 L225 185" stroke="#6E0E1A" stroke-width="1.5" opacity="0.65"/>
+  <path d="M245 210 L242 185" stroke="#6E0E1A" stroke-width="1.5" opacity="0.65"/>
+
+  <!-- Main body (oval/teardrop) -->
+  <path d="M140 130
+           Q140 60 220 50
+           Q330 50 360 130
+           Q330 210 220 210
+           Q140 200 140 130 Z"
+        fill="url(#frBody)"
+        stroke="#6E0E1A"
+        stroke-width="3"
+        stroke-linejoin="round"/>
+
+  <!-- Belly highlight -->
+  <path d="M160 150
+           Q200 200 280 200
+           Q320 200 345 170
+           Q330 195 280 205
+           Q200 210 160 175 Z"
+        fill="url(#frBelly)"
+        opacity="0.85"/>
+
+  <!-- Body separation line -->
+  <path d="M155 145 Q235 195 345 165"
+        stroke="#6E0E1A"
+        stroke-width="2"
+        fill="none"
+        opacity="0.5"/>
+
+  <!-- Scale pattern -->
+  <g stroke="#6E0E1A" stroke-width="1.6" fill="none" opacity="0.55">
+    <path d="M195 95 Q210 110 195 125"/>
+    <path d="M225 90 Q240 110 225 130"/>
+    <path d="M255 90 Q270 110 255 130"/>
+    <path d="M285 95 Q300 110 285 130"/>
+    <path d="M210 125 Q225 140 210 155"/>
+    <path d="M240 125 Q255 140 240 160"/>
+    <path d="M270 125 Q285 140 270 160"/>
+    <path d="M300 130 Q315 145 300 160"/>
+  </g>
+
+  <!-- Gill line -->
+  <path d="M195 80 Q190 130 195 180"
+        stroke="#6E0E1A"
+        stroke-width="2.4"
+        fill="none"
+        opacity="0.75"/>
+
+  <!-- Eye -->
+  <circle cx="305" cy="110" r="22" fill="#FFFFFF" stroke="#6E0E1A" stroke-width="3"/>
+  <circle cx="310" cy="112" r="13" fill="#1A1A2E"/>
+  <circle cx="314" cy="108" r="5" fill="#FFFFFF"/>
+  <circle cx="304" cy="116" r="2" fill="#FFFFFF" opacity="0.85"/>
+
+  <!-- Mouth (smile) -->
+  <path d="M348 138
+           Q358 145 350 158
+           Q345 154 343 148 Z"
+        fill="#6E0E1A"/>
+  <path d="M348 140 Q354 148 349 156"
+        stroke="#FF8A8A"
+        stroke-width="1.4"
+        fill="none"
+        opacity="0.7"/>
+
+  <!-- Body shine -->
+  <ellipse cx="230" cy="85" rx="55" ry="9" fill="#FFFFFF" opacity="0.35"/>
+  <ellipse cx="260" cy="70" rx="20" ry="4" fill="#FFFFFF" opacity="0.55"/>
+</svg>

@@ -1,0 +1,48 @@
+<svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="psBodyGrad" cx="50%" cy="40%" r="60%">
+      <stop offset="0%" stop-color="#3D526F"/>
+      <stop offset="55%" stop-color="#0E1A2D"/>
+      <stop offset="100%" stop-color="#05080F"/>
+    </radialGradient>
+    <linearGradient id="psBellyGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF"/>
+      <stop offset="100%" stop-color="#D7E4EE"/>
+    </linearGradient>
+    <linearGradient id="psBeakGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FFD27A"/>
+      <stop offset="100%" stop-color="#E08A2F"/>
+    </linearGradient>
+    <linearGradient id="psFootGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FFAE5E"/>
+      <stop offset="100%" stop-color="#E07823"/>
+    </linearGradient>
+    <linearGradient id="psScarfGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F76060"/>
+      <stop offset="100%" stop-color="#B22E2E"/>
+    </linearGradient>
+  </defs>
+  <ellipse cx="100" cy="184" rx="48" ry="6" fill="rgba(0,0,0,0.25)"/>
+  <path d="M70 168 Q60 178 70 184 Q88 188 92 178 Z" fill="url(#psFootGrad)"/>
+  <path d="M130 168 Q140 178 130 184 Q112 188 108 178 Z" fill="url(#psFootGrad)"/>
+  <path d="M100 30 C56 30 38 70 38 110 C38 150 60 180 100 180 C140 180 162 150 162 110 C162 70 144 30 100 30 Z" fill="url(#psBodyGrad)"/>
+  <path d="M100 62 C74 62 64 92 64 120 C64 150 80 172 100 172 C120 172 136 150 136 120 C136 92 126 62 100 62 Z" fill="url(#psBellyGrad)"/>
+  <path d="M42 96 Q22 116 32 152 Q48 156 56 138 Q58 116 56 96 Z" fill="url(#psBodyGrad)"/>
+  <path d="M158 96 Q178 116 168 152 Q152 156 144 138 Q142 116 144 96 Z" fill="url(#psBodyGrad)"/>
+  <path d="M52 78 Q100 96 148 78 L148 92 Q100 110 52 92 Z" fill="url(#psScarfGrad)"/>
+  <path d="M138 86 L160 110 L150 116 L132 96 Z" fill="#B22E2E"/>
+  <ellipse cx="82" cy="86" rx="9" ry="11" fill="#FFFFFF"/>
+  <ellipse cx="118" cy="86" rx="9" ry="11" fill="#FFFFFF"/>
+  <circle cx="80" cy="90" r="4.5" fill="#0B0F18"/>
+  <circle cx="120" cy="90" r="4.5" fill="#0B0F18"/>
+  <circle cx="81.5" cy="88.5" r="1.6" fill="#FFFFFF"/>
+  <circle cx="121.5" cy="88.5" r="1.6" fill="#FFFFFF"/>
+  <ellipse cx="74" cy="106" rx="6" ry="3.5" fill="#F7B7BC" opacity="0.7"/>
+  <ellipse cx="126" cy="106" rx="6" ry="3.5" fill="#F7B7BC" opacity="0.7"/>
+  <path d="M100 96 L92 110 L100 116 L108 110 Z" fill="url(#psBeakGrad)" stroke="#E08A2F" stroke-width="0.8"/>
+  <path d="M100 110 L100 116" stroke="#E08A2F" stroke-width="0.8"/>
+  <path d="M92 128 Q100 122 108 128" stroke="#222" stroke-width="2" fill="none"/>
+  <path d="M86 96 L78 102" stroke="#80B8E0" stroke-width="2" stroke-linecap="round"/>
+  <path d="M114 96 L122 102" stroke="#80B8E0" stroke-width="2" stroke-linecap="round"/>
+  <ellipse cx="78" cy="50" rx="14" ry="7" fill="rgba(255,255,255,0.18)"/>
+</svg>

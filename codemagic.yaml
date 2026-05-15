@@ -1,0 +1,149 @@
+workflows:
+  react-native-ios:
+    name: React Native iOS
+    max_build_duration: 120
+    instance_type: mac_mini_m2
+    environment:
+      groups:
+        - creds
+      vars:
+        XCODE_WORKSPACE: "IcePenguinStay.xcworkspace" # <----
+        XCODE_SCHEME: "IcePenguinStay" # <----
+        BUNDLE_ID: "com.theicebreakpenguin" # <----
+        APP_STORE_APP_ID: 6769757400 # <----
+        APP_STORE_CONNECT_KEY_ID: "M93987W2DH" # <----
+        APP_STORE_CONNECT_ISSUER_ID: "65662e1f-4be0-4d00-a0de-d1bfb953099e" # <----
+        node: "20"
+        xcode: 26.0.1
+        cocoapods: default
+
+    # ─── CACHE: biggest speed win (~4 min saved) ────────────────────────────
+    cache:
+      cache_paths:
+        - node_modules
+        - $HOME/.npm
+        - $HOME/Library/Caches/CocoaPods
+
+    triggering:
+      events:
+        - tag
+      tag_patterns:
+        - pattern: "v*"
+          include: true
+
+    scripts:
+      # 1. JS deps — ~20 sec from cache instead of ~2-3 min
+      - name: Install JS dependencies
+        script: npm install
+
+      # 2. Pods — clean install to avoid stale cache from previous Xcode versions
+      - name: Install CocoaPods
+        script: |
+          cd ios
+          rm -rf Pods build
+          pod install --repo-update
+      - name: Fix fmt for Xcode 26
+        # The Podfile's post_install already runs this exact patch — kept here
+        # as belt-and-suspenders in case pod install was skipped/cached.
+        # Root cause: fmt 10.x bundled with RN 0.80 fails to compile under
+        # Xcode 26's Clang with consteval-validated format strings. We force
+        # FMT_USE_CONSTEVAL=0 by rewriting base.h.
+        script: |
+          set +e
+          FILE=ios/Pods/fmt/include/fmt/base.h
+          if [ -f "$FILE" ]; then
+            BEFORE=$(grep -c '^#  define FMT_USE_CONSTEVAL 1$' "$FILE")
+            [ -z "$BEFORE" ] && BEFORE=0
+            sed -i '' 's/^#  define FMT_USE_CONSTEVAL 1$/#  define FMT_USE_CONSTEVAL 0/' "$FILE"
+            AFTER=$(grep -c '^#  define FMT_USE_CONSTEVAL 1$' "$FILE")
+            [ -z "$AFTER" ] && AFTER=0
+            REPLACED=$((BEFORE - AFTER))
+            echo "fmt patch: replaced $REPLACED of $BEFORE FMT_USE_CONSTEVAL=1 lines"
+          else
+            echo "$FILE not found — skipping fmt patch"
+          fi
+          exit 0
+      - name: Verify fmt patch
+        script: |
+          set +e
+          FILE=ios/Pods/fmt/include/fmt/base.h
+          REMAINING=$(grep -c '^#  define FMT_USE_CONSTEVAL 1$' "$FILE")
+          [ -z "$REMAINING" ] && REMAINING=0
+          echo "Remaining FMT_USE_CONSTEVAL 1 lines: $REMAINING (must be 0)"
+          if [ "$REMAINING" != "0" ]; then
+            echo "ERROR: fmt patch did not apply"
+            grep -n '^#  define FMT_USE_CONSTEVAL 1$' "$FILE"
+            exit 1
+          fi
+          exit 0
+
+      # 3. Pre-bundle JS — Xcode skips bundling step, saves ~1 min
+      - name: Pre-bundle React Native JS
+        script: |
+          npx react-native bundle \
+            --entry-file index.js \
+            --platform ios \
+            --dev false \
+            --bundle-output ios/main.jsbundle \
+            --assets-dest ios
+
+      # 4. Code signing
+      - name: Set up keychain
+        script: keychain initialize
+
+      - name: Fetch signing files
+        script: app-store-connect fetch-signing-files "$BUNDLE_ID" --type IOS_APP_STORE --create
+
+      - name: Add certificates to keychain
+        script: keychain add-certificates
+
+      # 5. Version bump
+      - name: Increment build number
+        script: |
+          cd ios
+
+          CURRENT_BUILD=$(app-store-connect get-latest-testflight-build-number "$APP_STORE_APP_ID")
+          CURRENT_BUILD=${CURRENT_BUILD:-0}
+          NEXT_BUILD=$((CURRENT_BUILD + 1))
+
+          if [[ "$CM_TAG" =~ ^v[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
+            NEW_VERSION=${CM_TAG#v}
+            echo "Tag $CM_TAG → version $NEW_VERSION"
+            agvtool new-marketing-version "$NEW_VERSION"
+          fi
+
+          echo "Build number → $NEXT_BUILD"
+          agvtool new-version -all $NEXT_BUILD
+
+      - name: Set up code signing
+        script: xcode-project use-profiles --warn-only
+
+      # 6. Build — disable indexing + whole-module for faster compile
+      - name: Build IPA
+        script: |
+          xcode-project build-ipa \
+            --workspace "$CM_BUILD_DIR/ios/$XCODE_WORKSPACE" \
+            --scheme "$XCODE_SCHEME" \
+            --archive-flags="-destination 'generic/platform=iOS' COMPILER_INDEX_STORE_ENABLE=NO SWIFT_COMPILATION_MODE=wholemodule"
+
+    artifacts:
+      - build/ios/ipa/*.ipa
+      - /tmp/xcodebuild_logs/*.log
+    publishing:
+      email:
+        recipients:
+          - SerhiyVasylyk130@icloud.com      # <----
+        notify:
+          success: true
+          failure: false
+      slack:
+        channel: '#builds'
+        notify_on_build_start: true
+        notify:
+          success: true
+          failure: false
+      app_store_connect:
+        api_key: "$APP_STORE_CONNECT_PRIVATE_KEY"
+        key_id: "$APP_STORE_CONNECT_KEY_ID"
+        issuer_id: "$APP_STORE_CONNECT_ISSUER_ID"
+        submit_to_testflight: true

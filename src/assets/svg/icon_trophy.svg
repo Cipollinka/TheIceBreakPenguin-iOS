@@ -1,0 +1,16 @@
+<svg width="48" height="48" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="trophyG" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FFE082"/>
+      <stop offset="50%" stop-color="#FFB037"/>
+      <stop offset="100%" stop-color="#7A4B0C"/>
+    </linearGradient>
+  </defs>
+  <rect x="18" y="36" width="12" height="4" rx="1" fill="url(#trophyG)"/>
+  <rect x="14" y="40" width="20" height="4" rx="1" fill="url(#trophyG)"/>
+  <path d="M14 8 L34 8 Q35 24 30 32 Q27 35 24 35 Q21 35 18 32 Q13 24 14 8 Z" fill="url(#trophyG)" stroke="#7A4B0C" stroke-width="1.4"/>
+  <path d="M14 11 Q6 11 6 18 Q6 25 14 27" fill="none" stroke="url(#trophyG)" stroke-width="3"/>
+  <path d="M34 11 Q42 11 42 18 Q42 25 34 27" fill="none" stroke="url(#trophyG)" stroke-width="3"/>
+  <path d="M17 14 Q20 22 22 28" stroke="rgba(255,255,255,0.55)" stroke-width="2" fill="none"/>
+  <text x="24" y="26" font-size="14" font-family="Impact, sans-serif" text-anchor="middle" fill="#7A4B0C" font-weight="bold">★</text>
+</svg>

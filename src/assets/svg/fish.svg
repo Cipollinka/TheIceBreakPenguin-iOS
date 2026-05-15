@@ -1,0 +1,22 @@
+<svg width="80" height="60" viewBox="0 0 80 60" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="fishBody" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FF8156"/>
+      <stop offset="100%" stop-color="#C8421C"/>
+    </linearGradient>
+    <linearGradient id="fishFin" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FFAE82"/>
+      <stop offset="100%" stop-color="#D85423"/>
+    </linearGradient>
+  </defs>
+  <path d="M8 30 L24 14 L24 46 Z" fill="url(#fishFin)"/>
+  <ellipse cx="44" cy="30" rx="28" ry="16" fill="url(#fishBody)"/>
+  <path d="M44 14 Q50 4 56 14 Z" fill="url(#fishFin)"/>
+  <path d="M44 46 Q50 56 56 46 Z" fill="url(#fishFin)"/>
+  <circle cx="60" cy="26" r="4" fill="#FFFFFF"/>
+  <circle cx="61" cy="26" r="2.4" fill="#1A1A2E"/>
+  <circle cx="62" cy="25" r="1" fill="#FFFFFF"/>
+  <path d="M44 20 Q56 24 64 20" stroke="#FFFFFF" stroke-width="1" fill="none" opacity="0.4"/>
+  <path d="M44 30 Q56 34 64 30" stroke="#FFFFFF" stroke-width="1" fill="none" opacity="0.4"/>
+  <path d="M44 40 Q56 44 64 40" stroke="#FFFFFF" stroke-width="1" fill="none" opacity="0.4"/>
+</svg>

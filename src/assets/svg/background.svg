@@ -1,0 +1,44 @@
+<svg width="400" height="800" viewBox="0 0 400 800" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="bgSky" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#06203F"/>
+      <stop offset="55%" stop-color="#0E3F70"/>
+      <stop offset="100%" stop-color="#1D6BA0"/>
+    </linearGradient>
+    <radialGradient id="moonGlow" cx="80%" cy="14%" r="38%">
+      <stop offset="0%" stop-color="rgba(190, 224, 255, 0.55)"/>
+      <stop offset="100%" stop-color="rgba(190, 224, 255, 0)"/>
+    </radialGradient>
+    <linearGradient id="ridge1" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1D4A77"/>
+      <stop offset="100%" stop-color="#143961"/>
+    </linearGradient>
+    <linearGradient id="ridge2" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#2A6EA7"/>
+      <stop offset="100%" stop-color="#1A4E80"/>
+    </linearGradient>
+  </defs>
+  <rect x="0" y="0" width="400" height="800" fill="url(#bgSky)"/>
+  <rect x="0" y="0" width="400" height="800" fill="url(#moonGlow)"/>
+  <g fill="#FFFFFF" opacity="0.9">
+    <circle cx="48" cy="64" r="1.6"/>
+    <circle cx="88" cy="112" r="1"/>
+    <circle cx="144" cy="40" r="1.4"/>
+    <circle cx="200" cy="96" r="1"/>
+    <circle cx="260" cy="32" r="1.2"/>
+    <circle cx="328" cy="176" r="1"/>
+    <circle cx="368" cy="64" r="1.6"/>
+    <circle cx="28" cy="144" r="1"/>
+    <circle cx="172" cy="160" r="1.1"/>
+  </g>
+  <circle cx="320" cy="104" r="24" fill="#F2F8FF" opacity="0.95"/>
+  <circle cx="328" cy="96" r="22" fill="#06203F" opacity="0.4"/>
+  <polygon points="0,464 72,320 128,416 192,304 264,416 336,336 400,440 400,800 0,800" fill="url(#ridge1)" opacity="0.85"/>
+  <g fill="#F0F7FC" opacity="0.9">
+    <polygon points="56,336 72,320 88,344 80,360 64,352"/>
+    <polygon points="176,320 192,304 208,328 200,344 184,336"/>
+    <polygon points="320,352 336,336 352,360 344,376 328,368"/>
+  </g>
+  <path d="M0 528 Q100 464 200 512 T400 496 L400 800 L0 800 Z" fill="url(#ridge2)"/>
+  <path d="M0 624 Q128 560 232 608 T400 624 L400 800 L0 800 Z" fill="#3E89BD" opacity="0.65"/>
+</svg>

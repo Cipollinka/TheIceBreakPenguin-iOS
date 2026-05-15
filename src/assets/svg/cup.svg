@@ -1,0 +1,17 @@
+<svg width="120" height="120" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="cupGold" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FFE082"/>
+      <stop offset="55%" stop-color="#FFB037"/>
+      <stop offset="100%" stop-color="#B8730F"/>
+    </linearGradient>
+  </defs>
+  <ellipse cx="60" cy="106" rx="38" ry="6" fill="rgba(0,0,0,0.25)"/>
+  <rect x="48" y="92" width="24" height="12" rx="3" fill="url(#cupGold)"/>
+  <rect x="36" y="100" width="48" height="8" rx="4" fill="url(#cupGold)"/>
+  <path d="M30 24 L90 24 Q92 56 80 76 Q74 86 60 90 Q46 86 40 76 Q28 56 30 24 Z" fill="url(#cupGold)"/>
+  <path d="M30 30 Q14 30 14 44 Q14 60 32 64" fill="none" stroke="url(#cupGold)" stroke-width="6"/>
+  <path d="M90 30 Q106 30 106 44 Q106 60 88 64" fill="none" stroke="url(#cupGold)" stroke-width="6"/>
+  <path d="M36 32 Q40 60 50 78" stroke="rgba(255,255,255,0.7)" stroke-width="3" fill="none"/>
+  <text x="60" y="68" font-size="22" font-family="Impact, sans-serif" text-anchor="middle" fill="#7A4B0C">★</text>
+</svg>

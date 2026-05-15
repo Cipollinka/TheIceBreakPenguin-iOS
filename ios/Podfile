@@ -31,5 +31,44 @@ target 'IcePenguinStay' do
       :mac_catalyst_enabled => false,
       # :ccache_enabled => true
     )
+
+    # Patch fmt/base.h to force-disable consteval (Xcode 16+ "not a constant expression" fix)
+    fmt_base = File.join(installer.sandbox.root, 'fmt/include/fmt/base.h')
+    if File.exist?(fmt_base)
+      contents = File.read(fmt_base)
+      sentinel = '// Patched: force-disable consteval'
+      unless contents.include?(sentinel)
+        patched = contents.sub(
+          /\/\/ Detect consteval, C\+\+20 constexpr extensions and std::is_constant_evaluated\.\n#if !defined\(__cpp_lib_is_constant_evaluated\).*?#endif\n/m,
+          "// Detect consteval, C++20 constexpr extensions and std::is_constant_evaluated.\n#{sentinel} to fix Xcode 16+ build.\n#ifndef FMT_USE_CONSTEVAL\n#  define FMT_USE_CONSTEVAL 0\n#endif\n",
+        )
+        File.write(fmt_base, patched)
+        Pod::UI.puts "Patched fmt/base.h to disable consteval".green
+      end
+    end
+
+    # Fix Xcode 16+ compatibility for transitive C++ pods (fmt consteval, glog/Yoga -Werror)
+    installer.pods_project.targets.each do |target|
+      target.build_configurations.each do |config|
+        if target.name == 'fmt'
+          config.build_settings['GCC_PREPROCESSOR_DEFINITIONS'] ||= ['$(inherited)']
+          unless config.build_settings['GCC_PREPROCESSOR_DEFINITIONS'].include?('FMT_USE_CONSTEVAL=0')
+            config.build_settings['GCC_PREPROCESSOR_DEFINITIONS'] << 'FMT_USE_CONSTEVAL=0'
+          end
+        end
+        if ['glog', 'Yoga', 'SocketRocket', 'fmt'].include?(target.name)
+          config.build_settings['GCC_TREAT_WARNINGS_AS_ERRORS'] = 'NO'
+          config.build_settings['CLANG_WARN_DOCUMENTATION_COMMENTS'] = 'NO'
+          flags = config.build_settings['OTHER_CFLAGS'] || ['$(inherited)']
+          flags = [flags] unless flags.is_a?(Array)
+          flags << '-Wno-error' unless flags.include?('-Wno-error')
+          config.build_settings['OTHER_CFLAGS'] = flags
+          cpp_flags = config.build_settings['OTHER_CPLUSPLUSFLAGS'] || ['$(inherited)']
+          cpp_flags = [cpp_flags] unless cpp_flags.is_a?(Array)
+          cpp_flags << '-Wno-error' unless cpp_flags.include?('-Wno-error')
+          config.build_settings['OTHER_CPLUSPLUSFLAGS'] = cpp_flags
+        end
+      end
+    end
   end
 end

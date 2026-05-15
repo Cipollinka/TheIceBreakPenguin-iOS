@@ -1,0 +1,21 @@
+<svg width="48" height="48" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="coinGrad" cx="40%" cy="35%" r="65%">
+      <stop offset="0%" stop-color="#FFF7C2"/>
+      <stop offset="55%" stop-color="#FFC83B"/>
+      <stop offset="100%" stop-color="#A66600"/>
+    </radialGradient>
+    <linearGradient id="coinRim" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FFE082"/>
+      <stop offset="100%" stop-color="#A66600"/>
+    </linearGradient>
+  </defs>
+  <circle cx="24" cy="24" r="20" fill="url(#coinRim)"/>
+  <circle cx="24" cy="24" r="16" fill="url(#coinGrad)"/>
+  <path d="M16 24 Q24 30 32 24 Q24 18 16 24 Z" fill="rgba(255,255,255,0.3)"/>
+  <g transform="translate(24 24)">
+    <path d="M-7 -5 L7 -5 L4 0 L7 5 L-7 5 L-4 0 Z" fill="#7A4B0C" opacity="0.85"/>
+    <path d="M-5 -3 L5 -3 M-5 3 L5 3" stroke="#FFE082" stroke-width="1" stroke-linecap="round"/>
+  </g>
+  <circle cx="18" cy="18" r="3" fill="rgba(255,255,255,0.55)"/>
+</svg>

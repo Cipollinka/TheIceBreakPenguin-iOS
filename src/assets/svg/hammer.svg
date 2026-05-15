@@ -1,0 +1,17 @@
+<svg width="80" height="80" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="hammerHead" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#E5EAF0"/>
+      <stop offset="50%" stop-color="#9AAABC"/>
+      <stop offset="100%" stop-color="#54657A"/>
+    </linearGradient>
+    <linearGradient id="hammerHandle" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#A87246"/>
+      <stop offset="100%" stop-color="#5D3E1F"/>
+    </linearGradient>
+  </defs>
+  <rect x="35" y="32" width="10" height="42" rx="3" fill="url(#hammerHandle)" transform="rotate(-20 40 50)"/>
+  <rect x="14" y="14" width="38" height="22" rx="4" fill="url(#hammerHead)" transform="rotate(-20 32 24)"/>
+  <rect x="14" y="16" width="38" height="4" fill="rgba(255,255,255,0.55)" transform="rotate(-20 32 24)"/>
+  <circle cx="40" cy="50" r="2" fill="rgba(0,0,0,0.3)"/>
+</svg>

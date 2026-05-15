@@ -1,0 +1,44 @@
+<svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="psBody" cx="50%" cy="40%" r="60%">
+      <stop offset="0%" stop-color="#3D526F"/>
+      <stop offset="55%" stop-color="#0E1A2D"/>
+      <stop offset="100%" stop-color="#05080F"/>
+    </radialGradient>
+    <linearGradient id="psBelly" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF"/>
+      <stop offset="100%" stop-color="#D7E4EE"/>
+    </linearGradient>
+    <linearGradient id="psBeak" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FFD27A"/>
+      <stop offset="100%" stop-color="#E08A2F"/>
+    </linearGradient>
+    <linearGradient id="psFoot" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FFAE5E"/>
+      <stop offset="100%" stop-color="#E07823"/>
+    </linearGradient>
+    <linearGradient id="psCoat" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF"/>
+      <stop offset="100%" stop-color="#C2D6E2"/>
+    </linearGradient>
+  </defs>
+  <ellipse cx="100" cy="184" rx="48" ry="6" fill="rgba(0,0,0,0.25)"/>
+  <path d="M70 168 Q60 178 70 184 Q88 188 92 178 Z" fill="url(#psFoot)"/>
+  <path d="M130 168 Q140 178 130 184 Q112 188 108 178 Z" fill="url(#psFoot)"/>
+  <path d="M100 30 C56 30 38 70 38 110 C38 150 60 180 100 180 C140 180 162 150 162 110 C162 70 144 30 100 30 Z" fill="url(#psBody)"/>
+  <path d="M44 110 L156 110 L162 178 L100 184 L38 178 Z" fill="url(#psCoat)" opacity="0.95"/>
+  <path d="M100 62 C74 62 64 92 64 120 C64 150 80 172 100 172 C120 172 136 150 136 120 C136 92 126 62 100 62 Z" fill="url(#psBelly)"/>
+  <path d="M42 96 Q22 116 32 152 Q48 156 56 138 Q58 116 56 96 Z" fill="url(#psBody)"/>
+  <path d="M158 96 Q178 116 168 152 Q152 156 144 138 Q142 116 144 96 Z" fill="url(#psBody)"/>
+  <circle cx="82" cy="86" r="13" fill="none" stroke="#0B0F18" stroke-width="3"/>
+  <circle cx="118" cy="86" r="13" fill="none" stroke="#0B0F18" stroke-width="3"/>
+  <path d="M95 86 L105 86" stroke="#0B0F18" stroke-width="3"/>
+  <circle cx="82" cy="86" r="11" fill="rgba(160,210,255,0.35)"/>
+  <circle cx="118" cy="86" r="11" fill="rgba(160,210,255,0.35)"/>
+  <circle cx="80" cy="84" r="3" fill="#FFFFFF" opacity="0.9"/>
+  <circle cx="116" cy="84" r="3" fill="#FFFFFF" opacity="0.9"/>
+  <path d="M100 96 L92 110 L100 116 L108 110 Z" fill="url(#psBeak)" stroke="#E08A2F" stroke-width="0.8"/>
+  <path d="M90 124 Q100 132 110 124" stroke="#222" stroke-width="2" fill="none"/>
+  <rect x="60" y="146" width="6" height="26" rx="3" fill="#56C9F5"/>
+  <rect x="60" y="146" width="6" height="14" rx="3" fill="#FF6B6B"/>
+</svg>

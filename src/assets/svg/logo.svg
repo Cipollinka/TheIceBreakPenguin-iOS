@@ -1,0 +1,32 @@
+<svg width="280" height="160" viewBox="0 0 280 160" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="logoIceGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF"/>
+      <stop offset="50%" stop-color="#B5DDF0"/>
+      <stop offset="100%" stop-color="#5290BC"/>
+    </linearGradient>
+    <linearGradient id="logoBorder" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#2C6FA0"/>
+      <stop offset="100%" stop-color="#103E68"/>
+    </linearGradient>
+    <radialGradient id="logoGlow" cx="50%" cy="50%" r="60%">
+      <stop offset="0%" stop-color="rgba(180,220,255,0.45)"/>
+      <stop offset="100%" stop-color="rgba(180,220,255,0)"/>
+    </radialGradient>
+  </defs>
+  <ellipse cx="140" cy="80" rx="135" ry="70" fill="url(#logoGlow)"/>
+  <g>
+    <path d="M30 40 Q140 -10 250 40 L250 110 Q140 150 30 110 Z" fill="url(#logoBorder)"/>
+    <path d="M40 48 Q140 4 240 48 L240 102 Q140 138 40 102 Z" fill="url(#logoIceGrad)"/>
+  </g>
+  <g font-family="Impact, sans-serif" text-anchor="middle">
+    <text x="140" y="68" font-size="32" fill="#0B345D" stroke="#FFFFFF" stroke-width="2.5" stroke-linejoin="round" paint-order="stroke">DON'T BREAK</text>
+    <text x="140" y="104" font-size="36" fill="#0E3F70" stroke="#FFFFFF" stroke-width="3" stroke-linejoin="round" paint-order="stroke">THE ICE</text>
+  </g>
+  <g opacity="0.9">
+    <circle cx="60" cy="36" r="3" fill="#FFFFFF"/>
+    <circle cx="220" cy="40" r="2.4" fill="#FFFFFF"/>
+    <circle cx="80" cy="124" r="2.4" fill="#FFFFFF"/>
+    <circle cx="200" cy="118" r="3" fill="#FFFFFF"/>
+  </g>
+</svg>
