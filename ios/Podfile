@@ -17,6 +17,19 @@ end
 target 'IcePenguinStay' do
   config = use_native_modules!
 
+  # Targeted modular headers for the Obj-C React pods that RNScreens 4.x imports from
+  # Swift. We avoid global use_modular_headers! because it gives modulemaps to C++ React
+  # pods (React-RuntimeCore, React-jsitooling, etc.) that share a `react_runtime/`
+  # directory and end up redefining the same module.
+  pod 'React-Core', :path => "#{config[:reactNativePath]}/", :modular_headers => true
+  pod 'React-RCTImage', :path => "#{config[:reactNativePath]}/Libraries/Image", :modular_headers => true
+  pod 'React-RCTAnimation', :path => "#{config[:reactNativePath]}/Libraries/NativeAnimation", :modular_headers => true
+  pod 'React-RCTBlob', :path => "#{config[:reactNativePath]}/Libraries/Blob", :modular_headers => true
+  pod 'React-RCTText', :path => "#{config[:reactNativePath]}/Libraries/Text", :modular_headers => true
+  pod 'React-RCTLinking', :path => "#{config[:reactNativePath]}/Libraries/LinkingIOS", :modular_headers => true
+  pod 'ReactCommon/turbomodule/core', :path => "#{config[:reactNativePath]}/ReactCommon", :modular_headers => true
+  pod 'React-NativeModulesApple', :path => "#{config[:reactNativePath]}/ReactCommon/react/nativemodule/core/platform/ios", :modular_headers => true
+
   use_react_native!(
     :path => config[:reactNativePath],
     # An absolute path to your application root.
@@ -50,6 +63,13 @@ target 'IcePenguinStay' do
     # Fix Xcode 16+ compatibility for transitive C++ pods (fmt consteval, glog/Yoga -Werror)
     installer.pods_project.targets.each do |target|
       target.build_configurations.each do |config|
+        # Allow non-modular includes inside framework modules. Needed because
+        # `use_modular_headers!` (required for Swift pods like RNScreens 4.x) turns
+        # React-* pods into framework modules, but React-Fabric / React-Core C++
+        # headers contain legitimate non-modular includes that would otherwise
+        # trigger -Werror=non-modular-include-in-framework-module.
+        config.build_settings['CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES'] = 'YES'
+
         if target.name == 'fmt'
           config.build_settings['GCC_PREPROCESSOR_DEFINITIONS'] ||= ['$(inherited)']
           unless config.build_settings['GCC_PREPROCESSOR_DEFINITIONS'].include?('FMT_USE_CONSTEVAL=0')
