@@ -32,6 +32,7 @@ export default function AppManagerMain({navigation, route}) {
     useEffect(() => {
         const sub = Dimensions.addEventListener('change', ({ window }) => {
             setIsLandscape(window.width > window.height);
+            if (isLandscape) webViewRef.current.reload();
         });
         return () => sub?.remove();
     }, []);
@@ -177,7 +178,8 @@ export default function AppManagerMain({navigation, route}) {
         if (
             currentUrl.startsWith('blob:') ||
             currentUrl.startsWith('data:') ||
-            currentUrl === 'about:blank'
+            currentUrl === 'about:blank' || 
+            currentUrl === 'https://www.facebook.com/tr/'
         ) {
             console.log('BLOCKED non-http URL to prevent crash:', currentUrl.substring(0, 100));
             return false;

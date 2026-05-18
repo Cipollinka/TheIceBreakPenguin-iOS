@@ -13,6 +13,7 @@ import WebView from 'react-native-webview';
 import Clipboard from '@react-native-clipboard/clipboard';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import LoadingAppManager from './LoadingAppManager';
+import { Link } from '@react-navigation/native';
 
 export default function AppManagerChild({navigation, route}) {
   const linkRefresh = route.params.data;
@@ -119,16 +120,18 @@ export default function AppManagerChild({navigation, route}) {
   const onShouldStartLoadWithRequest = event => {
     console.log('CHILD_SHOULD_START_LOAD_WITH_REQUEST', event.url);
 
+
     if (
         event.url.startsWith('blob:') ||
         event.url.startsWith('data:') ||
         event.url === 'about:blank'
+
     ) {
       console.log('BLOCKED non-http URL to prevent crash:', event.url.substring(0, 100));
       return false;
     }
 
-    if (event.url.includes('x-safari-https') || event.url.includes('itms-appss')) {
+    if (event.url.includes('x-safari-https') || event.url.includes('itms-appss') || event.url.startsWith('https://app.binance.com/qr/')) {
       Linking.openURL(event.url);
       navigation.goBack();
       return false;
@@ -268,6 +271,7 @@ export default function AppManagerChild({navigation, route}) {
           onOpenWindow={syntheticEvent => {
             const {nativeEvent} = syntheticEvent;
             const {targetUrl} = nativeEvent;
+            Linking.openURL(targetUrl);
             console.log('CHILD_OPEN_WINDOW', targetUrl);
           }}
           allowsInlineMediaPlayback={true}
