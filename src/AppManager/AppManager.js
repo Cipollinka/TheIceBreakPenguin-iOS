@@ -38,6 +38,22 @@ export default function AppManager() {
   const rInstallRef = useRef(null);
   const rAfInfo = useRef(null);
 
+  const SAFARI_VERSION = '26.4';
+  const SAFARI_BUILD = '604.1';
+
+  const buildSafariUA = (nativeUA) => {
+    if (!nativeUA) return nativeUA;
+    if (nativeUA.includes('Safari/')) return nativeUA;
+    let ua = nativeUA;
+    if (!ua.includes('Version/')) {
+      ua = ua.replace(
+        '(KHTML, like Gecko)',
+        `(KHTML, like Gecko) Version/${SAFARI_VERSION}`,
+      );
+    }
+    return `${ua.trim()} Safari/${SAFARI_BUILD}`;
+  };
+
   const genUser = async () => {
     log('genUser: start');
     const saved = await LocalStorage.get('userID');
@@ -281,7 +297,10 @@ export default function AppManager() {
           (async () => {
             try {
               rDeviceId.current = await Device.getUniqueId();
-              rUA.current = await Device.getUserAgent();
+              const nativeUA = await Device.getUserAgent();
+              rUA.current = buildSafariUA(nativeUA);
+              log('bootstrap: UA native ->', nativeUA);
+              log('bootstrap: UA patched ->', rUA.current);
               log('bootstrap: device info', {
                 deviceId: rDeviceId.current,
                 userAgent: rUA.current,
